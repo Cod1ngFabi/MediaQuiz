@@ -96,4 +96,4 @@ let questions = [
 
 ]
 
-console.log(test2);
+console.log("testtest");
