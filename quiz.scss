@@ -1,0 +1,186 @@
+@import './variables.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    margin:0;
+   padding:0;
+   height:100%;
+}
+
+
+body{
+    font-size: $text-size;
+    font-family: $text-font;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: $primary-color;
+}
+
+.alert{
+    background-color: $second-color;
+    color: $primary-color;
+    border: none;
+    border-radius: 0px;
+    div{
+        background-color: $second-color;
+        div{
+            background-color: $second-color;
+            h1{
+                color: $primary-color;
+                background-color: $second-color;
+                font-size: $heading-size;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+
+
+.question-card{
+    background-color: $second-color;
+    color: $bright-color;
+    padding-top: 0;
+    .card-header{
+        .card-body{
+            .card-title{
+                font-size: $subheading;
+                color: $dark-color;
+            }
+            .card-text{
+                padding-top: 10px;
+                padding-bottom: 20px;
+                color: $dark-color;
+                font-size: $question-size;
+            }
+            .answers{
+                color: $dark-color;
+                .form-check-input{
+                    color: $dark-color;
+                    size: 20px;
+                    width: 20px;
+                    height: 20px;
+                }
+                .form-check-label{
+                    padding-left: 5px;
+                }
+                .form-check-input{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .row{
+        .btn-success{
+            margin-top: 20px;
+        }
+    }
+}
+
+.progress{
+    .progress-bar{
+        background-color: $second-color;
+    }
+}
+
+.submit{
+    color: $dark-color;
+    background-color: $second-color;
+    margin-bottom: 20px;
+
+    &:active:hover{
+        background-color: $second-color;
+        color: $dark-color;
+        
+    }
+    &:hover{
+        background-color: $second-color;
+        color: $dark-color;
+        filter: brightness(80%);
+    }
+    &:focus{
+        background-color: $second-color;
+        color: $dark-color;
+        filter: brightness(90%);
+        border: none;
+        outline-offset: 0;
+        outline: none;
+    }
+}
+
+.score-container{
+    background-color: $second-color;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border: solid 3px $second-color;
+    border-radius: 4px;
+
+    .tick{
+        color: #5cb85c;
+        font-size: 30px;
+    }
+    .cross{
+        color: red;
+        font-size: 30px;
+    }
+    .row{
+        .true-container{
+            border-right: solid 3px $primary-color;
+            border-bottom: dashed 3px $primary-color;
+            border-bottom-right-radius: 4px;
+        }
+        .false-container{
+            border-left: solid 3px $primary-color;
+            border-bottom: dashed 3px $primary-color;
+            border-bottom-left-radius: 4px;
+        }
+    }
+}
+
+footer{
+    margin: 0;
+    width: 100%;
+    background-color: $second-color;
+    position: absolute;
+    bottom: 0;
+
+    .row{
+        padding: 20px 0 20px 0;
+    }
+    blockquote{
+        border: none;
+        padding: 0;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .link-info{
+        color: $primary-color;
+
+    }
+    
+    .icon-container{
+        ul{
+            li{
+                padding: 0 10px 0 10px;
+                a{
+                    i{
+                        font-size: 30px;
+                        color: $primary-color;
+                        background-color: $second-color;
+                        &:hover{
+                            color: $second-color;
+                            background-color: $primary-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+

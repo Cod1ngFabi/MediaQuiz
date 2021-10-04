@@ -1,0 +1,24 @@
+//colors
+$primary-color: #1F4590;
+$second-color: #F0B666;
+$dark-color: black;
+$bright-color: white;
+
+// sizes
+$heading-size: 40px;
+$subheading: 32px;
+$question-size: 20px;
+$text-size: 16px;
+
+// font
+$text-font: 'Trebuchet MS', sans-serif;
+
+// breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);

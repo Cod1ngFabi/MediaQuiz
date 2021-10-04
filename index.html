@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" href="quiz.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="quiz.js"></script>
+</head>
+
+<body class="d-flex flex-column ">
+
+    <header class="alert alert-success" id="header">
+        <div class="container-fluid">
+            <div class="row">
+                <h1 class="text-primary text-center" id="title">QUIZ APP</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-fluid" style="max-width: 1200px;">
+
+        <div class="card well question-card">
+            <div class="card-header">
+                <div class="card-body">
+                    <h2 class="card-title text-center"><span class="question-count">1.</span> Question</h2>
+                    <div class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id reprehenderit ?</div>
+                    <div class="row">
+                        <div class="form-check answers">
+                            <div class="col-sm-3"><input type="radio" id="answer1" name="group" class="form-check-input mt-0" value="answer 1"><label class="form-check-label" for="answer1">Radio 1</label></div>
+                            <div class="col-sm-3"><input type="radio" id="answer2" name="group" class="form-check-input" value="answer 2"><label class="form-check-label" for="answer2">Radio 2</label></div>
+                            <div class="col-sm-3"><input type="radio" id="answer3" name="group" class="form-check-input" value="answer 3"><label class="form-check-label" for="answer3">Radio 3</label></div>
+                            <div class="col-sm-3"><input type="radio" id="answer4" name="group" class="form-check-input" value="answer 4"><label class="form-check-label" for="answer4">Radio 4</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-success text-center btn-lg">Next&nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+       
+
+        <div class="container-fluid score-container" style="max-width: 1200px;">
+            <div class="row">
+                <div class="col-sm-6 text-center alert alert-success true-container">
+                    <span><i class="fas fa-check-circle tick"></i></span>
+                    <h3 class="text-center">True :&nbsp;&nbsp;<span>5</span></h3>
+                </div>
+                <div class="col-sm-6 text-center alert alert-danger false-container">
+                    <span><i class="fas fa-times-circle cross"></i></span>
+                    <h3 class="text-center">False :&nbsp;&nbsp;<span> 5</span></h3>
+                </div>
+                <div class="row ">
+                    <div class="col-sm-6 text-center">
+                        <h3 class="text-primary text-center ">Result: &nbsp;<i class="far fa-smile">&nbsp;</i><i class="far fa-meh">&nbsp;</i><i class="far fa-frown"></i></h3>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <h3 class="text-primary text-center"><i class="far fa-smile"></i></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                <span><i class="far fa-copyright">&nbsp;2021 all rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;<br><br> Designed by <a href="https://github.com/Cod1ngFabi" class="link-info">Cod1ingFabi</a></i></span>
+            </div>
+            <div class="col-sm-4 text-center">
+                <span><blockquote class="blockquote mb-4"><i>"Failure is the condiment that gives success its flavor."</i></blockquote><figcaption class="text-muted"><i>- Truman Capote</i></figcaption></span>
+            </div>
+            <div class="col-sm-4 text-center icon-container">
+                <ul class="list-inline">
+                    Find me on:<br><br>
+                    <li class="list-inline-item"><a href="https://github.com/Cod1ngFabi" target="blank"><i class="fab fa-github"></i></a></li>
+                    <li class="list-inline-item"><a href="https://codepen.io/your-work/" target="blank"><i class="fab fa-codepen"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.freecodecamp.org/fabian_08" target="blank"><i class="fab fa-free-code-camp"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
