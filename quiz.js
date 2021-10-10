@@ -1,7 +1,11 @@
+// Score needed for the final evaluation
 let score = {
     right: 0,
     false: 0
 }
+
+// index for displaying the right question in the array
+let countQuestion = 0;
 
 let questions = [{
         question: 'What Lamborghini model does Bruce Wayne drive in the movie "Batman Begins" ?',
@@ -86,4 +90,47 @@ let questions = [{
 
 ]
 
-console.log("testtest11");
+/* let numberOfQuestions = document.getElementById("numberOfQuestions").textContent;
+numberOfQuestions = countQuestion+1 + " .";
+console.log(numberOfQuestions); */
+
+$(document).ready(function() {
+    $("#next").click(function() {
+    alert("yes");
+    $('#numberOfQuestions').text(countQuestion+1 + ". ");
+    $('#questionToAnswer').text(questions[countQuestion].question);
+    countQuestion++;
+    });
+});
+
+
+
+
+
+
+
+
+// function nextQuestion(){
+
+//     alert("yes");
+//     displayQuestionNumber();
+//     displayQuestions();
+    
+// }
+
+// function displayQuestions(){
+
+//     questionToAnswer.remove();
+//     let tempQuestion = questions[countQuestion].question;
+//     questionToAnswer.append(tempQuestion)
+
+// }
+
+
+// function displayQuestionNumber(){
+
+//     numberOfQuestions.remove();
+//     let number = document.createTextNode(countQuestion + 1 + ".");
+//     numberOfQuestions.append(number);
+//     countQuestion++;
+// }
