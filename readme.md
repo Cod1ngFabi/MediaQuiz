@@ -4,7 +4,8 @@
 
 ### 10 questions to answer
 
-Build with:
+Learning Aims:
 - Bootstrap 
 - Scss 
+- JQuery 
 - Vanilla JS
