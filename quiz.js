@@ -90,47 +90,77 @@ let questions = [{
 
 ]
 
-/* let numberOfQuestions = document.getElementById("numberOfQuestions").textContent;
-numberOfQuestions = countQuestion+1 + " .";
-console.log(numberOfQuestions); */
 
 $(document).ready(function() {
     $("#next").click(function() {
-    alert("yes");
-    $('#numberOfQuestions').text(countQuestion+1 + ". ");
-    $('#questionToAnswer').text(questions[countQuestion].question);
-    countQuestion++;
+
+        displayQuestion();
+
+        displayChoices();
+
+        countQuestion++;
     });
 });
 
 
+function displayQuestion() {
+    $('#numberOfQuestions').text(countQuestion + 1 + ". ");
+    $('#questionToAnswer').text(questions[countQuestion].question);
+}
+
+function displayChoices() {
+    let answerArray = [];
+
+    answerArray.push({
+        toWrite: questions[countQuestion].a,
+        answerLetter: questions[countQuestion].answer,
+        isTrueAnswer: questions[countQuestion].answer === Object.keys(questions[countQuestion])[1]
+    }, {
+        toWrite: questions[countQuestion].b,
+        answerLetter: questions[countQuestion].answer,
+        isTrueAnswer: questions[countQuestion].answer === Object.keys(questions[countQuestion])[2]
+    }, {
+        toWrite: questions[countQuestion].c,
+        answerLetter: questions[countQuestion].answer,
+        isTrueAnswer: questions[countQuestion].answer === Object.keys(questions[countQuestion])[3]
+
+    }, {
+        toWrite: questions[countQuestion].d,
+        answerLetter: questions[countQuestion].answer,
+        isTrueAnswer: questions[countQuestion].answer === Object.keys(questions[countQuestion])[4]
+    });
+    answerArray = shuffleArray(answerArray);
+
+    let length = answerArray.length;
+    for (let i = 0; i < length; i++) {
+        $('.form-check-label').each(function(i, obj) {
+            $(this).text(answerArray[i].toWrite);
+        });
+    }
+}
+
+
+
+function checkAnswer(number) {
+
+    let trueAnswer = questions[number].answer;
+    console.log(trueAnswer);
+
+}
+
+
+checkAnswer(countQuestion);
 
 
 
 
 
-
-// function nextQuestion(){
-
-//     alert("yes");
-//     displayQuestionNumber();
-//     displayQuestions();
-    
-// }
-
-// function displayQuestions(){
-
-//     questionToAnswer.remove();
-//     let tempQuestion = questions[countQuestion].question;
-//     questionToAnswer.append(tempQuestion)
-
-// }
-
-
-// function displayQuestionNumber(){
-
-//     numberOfQuestions.remove();
-//     let number = document.createTextNode(countQuestion + 1 + ".");
-//     numberOfQuestions.append(number);
-//     countQuestion++;
-// }
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
