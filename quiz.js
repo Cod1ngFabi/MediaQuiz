@@ -4,8 +4,13 @@ let score = {
     false: 0
 }
 
+
+
 // index for displaying the right question in the array
 let countQuestion = 0;
+
+let begin = true;
+
 
 let questions = [{
         question: 'What Lamborghini model does Bruce Wayne drive in the movie "Batman Begins" ?',
@@ -48,7 +53,7 @@ let questions = [{
         answer: 'c'
     },
     {
-        question: 'Where is Eric in the series from in the serie "Sex Education" ?',
+        question: 'Where is Eric from in the series from in the serie "Sex Education" ?',
         a: 'Nigeria',
         b: 'Tanzania',
         c: 'Kenya',
@@ -91,22 +96,32 @@ let questions = [{
 ]
 
 
+
 $(document).ready(function() {
     $("#next").click(function() {
 
         displayQuestion();
+        let choicesArray = displayChoices();
+        checkCklickedAnswer(choicesArray);
 
-        displayChoices();
+        console.log("right: " + score.right + " false: " + score.false);
+
+        $('.form-check-input').each(function() {
+            $(this).prop("checked", false);
+        });
 
         countQuestion++;
     });
 });
 
 
+
 function displayQuestion() {
     $('#numberOfQuestions').text(countQuestion + 1 + ". ");
     $('#questionToAnswer').text(questions[countQuestion].question);
 }
+
+
 
 function displayChoices() {
     let answerArray = [];
@@ -133,25 +148,28 @@ function displayChoices() {
 
     let length = answerArray.length;
     for (let i = 0; i < length; i++) {
-        $('.form-check-label').each(function(i, obj) {
+        $('.form-check-label').each(function(i) {
             $(this).text(answerArray[i].toWrite);
         });
     }
+    return answerArray;
 }
 
 
 
-function checkAnswer(number) {
+function checkCklickedAnswer(answerArrayToLookFor) {
 
-    let trueAnswer = questions[number].answer;
-    console.log(trueAnswer);
+    $('.form-check-input').each(function(i) {
+        console.log("Answer: " + answerArrayToLookFor[i].toWrite + " is: " + answerArrayToLookFor[i].isTrueAnswer);
+        console.log($(this).is(':checked') + " :" + answerArrayToLookFor[i].isTrueAnswer);
 
+        if ($(this).is(':checked') && answerArrayToLookFor[i].isTrueAnswer) {
+            alert("True answer !!!");
+            score.right++;
+            return;
+        }
+    });
 }
-
-
-checkAnswer(countQuestion);
-
-
 
 
 
