@@ -11,6 +11,8 @@ let countQuestion = 0;
 
 let begin = true;
 
+let tempArrayForAnswers = [];
+
 
 let questions = [{
         question: 'What Lamborghini model does Bruce Wayne drive in the movie "Batman Begins" ?',
@@ -96,9 +98,35 @@ let questions = [{
 ]
 
 
+$(document).ready(function() {
+ $('#startQuiz').click(function(){
+     // add question text and answer choices
+    displayQuestion();
+    displayChoices();
+    countQuestion++;
+
+     $('#startQuiz').hide(1500);
+     $('#next').show(1500);    
+ });
+});
+
+
 
 $(document).ready(function() {
     $("#next").click(function() {
+        
+        if(countQuestion === 10)
+        {
+            $('#next').attr("disabled","disabled");
+            return;
+        }
+
+
+        /*
+        if(begin === true){
+
+        }
+        */
 
         displayQuestion();
         let choicesArray = displayChoices();
@@ -152,7 +180,14 @@ function displayChoices() {
             $(this).text(answerArray[i].toWrite);
         });
     }
-    return answerArray;
+
+    if(begin === true){
+    tempArrayForAnswers = [...answerArray];
+    console.log(tempArrayForAnswers);
+    return;
+    }
+    
+    //return answerArray;
 }
 
 
