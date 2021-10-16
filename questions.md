@@ -78,7 +78,6 @@ Yu-gi-oh
  Norway
 
  
-
 What do death crystals do in the serie "Rick and Morty"?
 Turn you into a stone-cold killer
 SHOW YOU ARE GOING TO DIE
