@@ -1,19 +1,32 @@
-// Score needed for the final evaluation
+// Score needed for the final evaluation ------------------------
 let score = {
     right: 0,
-    false: 0
+    false: 0,
+    result: ["far fa-smile","far fa-meh","far fa-frown"]
 }
 
 
 
-// index for displaying the right question in the array
+const percentageToScore = {
+    BAD: 30,
+    GOOD: 70,
+    GREAT:  100
+}
+
+
+// index for displaying the right question in the array ---------------------
 let countQuestion = 0;
 
 let begin = true;
 
 let tempArrayForAnswers = [];
 
+let progressBarPercentToAdd = $('.progress').width();
+progressBarPercentToAdd = progressBarPercentToAdd * 0.10;
 
+
+
+// Question Array which contains Objects of answers  ----------------------
 let questions = [{
         question: 'What Lamborghini model does Bruce Wayne drive in the movie "Batman Begins" ?',
         a: 'Aventador',
@@ -88,55 +101,53 @@ let questions = [{
     },
     {
         question: 'What do death crystals do in the serie "Rick and Morty" ?',
-        a: 'Turn you into a stone-cold killer',
+        a: 'Turn you into a killer',
         b: 'Kill you obviously',
         c: 'Gives you a super power',
-        d: 'Show you how you are going to die',
+        d: 'Shows your death possiblities',
         answer: 'd'
     }
 
 ]
 
 
+
+// Start Quiz Button ----------------------
 $(document).ready(function() {
  $('#startQuiz').click(function(){
-     // add question text and answer choices
     displayQuestion();
     displayChoices();
     countQuestion++;
 
-     $('#startQuiz').hide(1500);
-     $('#next').show(1500);    
+     $('#startQuiz').fadeOut(300);
+     $('#next').delay(100).fadeIn(1600);    
  });
 });
 
 
 
+// Next Question Button ----------------------
 $(document).ready(function() {
     $("#next").click(function() {
-        
-        if(countQuestion === 10)
+
+        if(!lookForCheckedRadioButton())
         {
-            $('#next').attr("disabled","disabled");
+            alert("No button selected!!");
+            return;
+        }
+        
+        if(countQuestion === (questions.length))
+        {
+            lastQuestion();
             return;
         }
 
-
-        /*
-        if(begin === true){
-
-        }
-        */
-
+        checkCklickedAnswer(tempArrayForAnswers);
+        displayChoices();
         displayQuestion();
-        let choicesArray = displayChoices();
-        checkCklickedAnswer(choicesArray);
 
-        console.log("right: " + score.right + " false: " + score.false);
-
-        $('.form-check-input').each(function() {
-            $(this).prop("checked", false);
-        });
+        progressBar();
+        clearRadioButtons();
 
         countQuestion++;
     });
@@ -144,6 +155,7 @@ $(document).ready(function() {
 
 
 
+// Updates Question and displays them ----------------------
 function displayQuestion() {
     $('#numberOfQuestions').text(countQuestion + 1 + ". ");
     $('#questionToAnswer').text(questions[countQuestion].question);
@@ -151,7 +163,13 @@ function displayQuestion() {
 
 
 
+// Updates answer choices and displays them ----------------------
 function displayChoices() {
+
+    if(countQuestion === (questions.length))
+    {
+        return;
+    }
     let answerArray = [];
 
     answerArray.push({
@@ -181,25 +199,20 @@ function displayChoices() {
         });
     }
 
-    if(begin === true){
     tempArrayForAnswers = [...answerArray];
-    console.log(tempArrayForAnswers);
-    return;
-    }
-    
-    //return answerArray;
 }
 
 
 
+// SCheckes clicked RadioButton for right answer----------------------
 function checkCklickedAnswer(answerArrayToLookFor) {
-
+    
     $('.form-check-input').each(function(i) {
         console.log("Answer: " + answerArrayToLookFor[i].toWrite + " is: " + answerArrayToLookFor[i].isTrueAnswer);
-        console.log($(this).is(':checked') + " :" + answerArrayToLookFor[i].isTrueAnswer);
+        //console.log("checked: " + $(this).is(':checked') + " :" + answerArrayToLookFor[i].isTrueAnswer);
 
         if ($(this).is(':checked') && answerArrayToLookFor[i].isTrueAnswer) {
-            alert("True answer !!!");
+            alert("True answer !!!, Question: " + countQuestion);
             score.right++;
             return;
         }
@@ -208,6 +221,7 @@ function checkCklickedAnswer(answerArrayToLookFor) {
 
 
 
+// Shuffles the answers and returns them ----------------------
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -216,4 +230,69 @@ function shuffleArray(array) {
         array[j] = temp;
     }
     return array;
+}
+
+
+
+function progressBar(){
+    $('.progress-bar-striped').animate({"width": "+="+progressBarPercentToAdd+"px" })
+}
+
+
+
+function clearRadioButtons(){
+    $('.form-check-input').each(function() {
+        $(this).prop("checked", false);
+    });
+}
+
+
+
+function evaluateScore(){
+    let placeholderForResult = $('#emojiResult');
+    let textPlaceholder = $('#textResult');
+    
+    $('#trueAnswers').text(score.right);
+    $('#falseAnswers').text(score.false);
+
+    let numberQuestions = questions.length;
+    let resultPercentage = score.right * 100 / numberQuestions;
+    console.log(resultPercentage);
+    if(resultPercentage >= percentageToScore.GOOD)
+    {
+        textPlaceholder.text("Great Job! ");
+        return;
+    }
+    if(resultPercentage < percentageToScore.GOOD)
+    {
+        textPlaceholder.text("Keep going! "); 
+    }
+    if(resultPercentage <= percentageToScore.BAD)
+    {
+        textPlaceholder.text("Watch more! ");
+        return;
+    }
+}
+
+
+
+function lookForCheckedRadioButton(){
+    let oneChecked = false;
+    $('.form-check-input').each(function() {
+       if($(this).is(':checked'))
+       {
+            oneChecked = true;
+       };
+    });
+    return oneChecked;
+}
+
+
+
+function lastQuestion(){
+    $("#next").prop("disabled",true);
+            checkCklickedAnswer(tempArrayForAnswers);
+            progressBar();
+            score.false = questions.length - score.right;
+            evaluateScore();
 }
