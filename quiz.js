@@ -212,7 +212,6 @@ function checkCklickedAnswer(answerArrayToLookFor) {
         //console.log("checked: " + $(this).is(':checked') + " :" + answerArrayToLookFor[i].isTrueAnswer);
 
         if ($(this).is(':checked') && answerArrayToLookFor[i].isTrueAnswer) {
-            alert("True answer !!!, Question: " + countQuestion);
             score.right++;
             return;
         }

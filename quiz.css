@@ -102,7 +102,8 @@ body {
 footer {
   margin: 0;
   clear: both;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   width: 100%;
   background-color: #F0B666; }
   footer .row {
@@ -125,10 +126,6 @@ footer {
         background-color: #1F4590; }
 
 @media (min-width: 768px) {
-  footer {
-    position: absolute;
-    bottom: 0; }
-
   .row .true-container {
     border-right: solid 3px #1F4590;
     border-bottom: dashed 3px #1F4590;
@@ -137,5 +134,13 @@ footer {
     border-left: solid 3px #1F4590;
     border-bottom: dashed 3px #1F4590;
     border-bottom-left-radius: 4px; } }
+@media (max-width: 768px) {
+  footer {
+    position: static;
+    margin-top: 30px; } }
+@media (min-width: 1200px) {
+  footer {
+    position: absolute;
+    bottom: 0; } }
 
 /*# sourceMappingURL=quiz.css.map */
